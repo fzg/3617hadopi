@@ -4,12 +4,19 @@ extern char **environ;
 
 void randwait()
 {
+  static char _inited = 0;
+
+  if (!_inited) {
+   _inited = time(NULL);
+   srand(_inited);
+  }
   int t = rand() % MAX_WAIT;
   sleep (t + 1);
 }
 
 char *get_remote_host()
 {
+  if (!(*environ)) return "NotPOSIX";
   char **ptr = &environ[0];
 #ifdef TELNET
   while (*ptr && strncmp(*ptr, "REMOTEHOST", 10))

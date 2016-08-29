@@ -3,15 +3,15 @@ SRC = main.c welcome.c util.c auth.c ad.c
 
 CFLAGS = -g -Wall -Wextra -DTELNET
 
-all    : clean $(PRG)
-
 re     : fclean all
 
+all    : clean $(PRG)
+
 clean  :
-	-rm  *~ *.o
+	- rm  *~ *.o
 
 fclean :
-	-rm $(PRG) tmg
+	- rm $(PRG) tmg
 
 $(PRG) :
 	$(CC) -lnewt $(SRC) -o $(PRG) $(CFLAGS)
