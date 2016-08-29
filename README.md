@@ -3,6 +3,8 @@
 
 (C) 2010 fzn - WTFPL / pd
 
+![Screenshot](/screenshot.png "Login screen")
+
 
 It was a funny prank at the time :)
 
@@ -12,6 +14,9 @@ anti-piracy backend. It was listening on port 22 of hadopi.su.
 
 
 Sadly, AFAIC nobody found it, and I lost interest in adding features :)
+
+## Running:
+ - ./newtest [optional, set it as the shell of telnet sessions]
 
 ## Dependency:
 
