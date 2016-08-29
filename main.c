@@ -3,28 +3,32 @@
 
 #include "main.h"
 
-void swapHL()
+
+char swapHL()
 {
-  newtPushHelpLine("Appuyez sur une touche pour continuer.");
+  static char u = 0;
+  struct timeval tv = {0, 500000};
+  newtPopHelpLine();
+  if (++u%2) newtPushHelpLine("Appuyez sur une touche pour continuer.");
+  else     newtPushHelpLine(" ");
+  newtBell();
   newtRefresh();
-  usleep(200);
+  return waitforkeywithtimeout(&tv);
 }
 
 int main(int c, char **v)
 {
-  (void)c;
-  (void)v;
-  srand(time(0));
+  (void)c, (void)v;
+
   newtInit();
   newtCls();
+  newtPushHelpLine(NULL);
 
   newtDrawRootText(0, 0, "Service telematique H.A.D.O.P.I.");
   #include "logo.out.c"
-  int i = 3;
-  while (--i)
-    swapHL();
 
-  newtWaitForKey();
+  while (!swapHL());
+//  newtWaitForKey();
   disp_login();
 
   newtFinished();

@@ -2,6 +2,7 @@
 #define _MAIN_H_
 
 #include <newt.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

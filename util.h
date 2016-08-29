@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/select.h>
 #include <time.h>
 
 #define MAX_WAIT 5
@@ -12,5 +13,7 @@
 void randwait(void);
 
 void trylogaccess(const char *, const char *);
+
+char waitforkeywithtimeout(struct timeval *timeout);
 
 #endif

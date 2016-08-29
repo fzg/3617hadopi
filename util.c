@@ -65,3 +65,17 @@ void trylogaccess(const char *l, const char *p)
   fclose(fd);
 
 }
+
+char waitforkeywithtimeout(struct timeval *timeout)
+{
+  int err;
+  fd_set rfd, wfd, efd;
+  FD_ZERO(&rfd); FD_ZERO(&wfd); FD_ZERO(&efd);
+  FD_SET(0, &rfd);
+  if (select(1, &rfd, &wfd, &efd, timeout) > 0) {
+    return 1;
+//    return read(0, &err, 1);
+  }
+  return 0;
+}
+
